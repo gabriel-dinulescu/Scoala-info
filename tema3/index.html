@@ -1,0 +1,82 @@
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <script>
+            function numaratoare(n1, n2){
+                var nr = n1;
+                while(nr <= n2){
+                    if(nr%2 === 0){
+                        console.log(nr);
+                    }
+                    nr++;
+                }
+            }
+
+            // numaratoare(1, 100);
+
+            function FizzBuzz(n1, n2){
+                var nr = n1;
+                var fizz = 'fizz';
+                var buzz = 'buzz';
+                while(nr < n2){
+                    if(nr%3 === 0 && nr%5 === 0){
+                        console.log(fizz+' '+buzz);
+                    }
+                    else if(nr%3 === 0){
+                        console.log(fizz);
+                    }
+                    else if(nr%5 === 0){
+                        console.log(buzz);
+                    }
+                    else{
+                        console.log(nr);
+                    }
+                    nr++;
+                }
+            }
+            // FizzBuzz(1, 100);
+
+            function suma(n){
+                var nr = 0;
+                var suma = 0;
+                while(nr < n){
+                    suma += nr;
+                    nr++;
+                }
+                return suma;
+            }
+
+            suma(10);
+            function produs(n){
+                var nr = 1;
+                var produs = 1;
+                while(nr < n){
+                        produs *= nr;
+                        nr++;
+                }
+                return produs;
+            }
+
+            for (var a=[],i=0;i<40;++i) a[i]=i;
+
+            function shuffle(array) {
+            var tmp, current, top = array.length;
+            if(top) while(--top) {
+                current = Math.floor(Math.random() * (top + 1));
+                tmp = array[current];
+                array[current] = array[top];
+                array[top] = tmp;
+                }
+                return array;
+            }
+            
+            a = shuffle(a);
+            console.log(a);
+            //suma numerelor mai mici decat n si produsul numerelor mai mici decat n decat 
+        </script>
+    </body>
+
+</html>

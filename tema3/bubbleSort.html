@@ -1,0 +1,59 @@
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <script>
+        /**
+        -Functie ce accepta doi parametrii 'x' si 'y', 
+        -'x' reprezinta valorea de la care se porneste incrementarea +1, 
+        -'y' reprezinta numarul de iteratii
+        */
+        function randomArray(x, y){
+            //declaram var a array gol 
+            var a = [];
+            //for loop ce parcurge y iteratii pornind de la valorea x  
+            for (i=0;i<y;++i){ 
+            //asignam valorile din loop in array a
+                a[i]=x;
+                x++;
+            }
+            //functie shuffle de randomizare ce accepta un array de valori numerice
+            function shuffle(array) {
+                var tmp, current, top = array.length;
+                    if(top) while(--top) {
+                        current = Math.floor(Math.random() * (top + 1));
+                        tmp = array[current];
+                        array[current] = array[top];
+                        array[top] = tmp;
+                        }
+                return array;
+        }
+        //shuffle array a
+        a = shuffle(a);
+        //intoarce array a
+        return a;
+        }
+
+        function bubbleSort(array){
+            var arrayNesortat = array;
+            console.log(arrayNesortat);
+            var nr_curr;
+            var nr_comp;
+            while(nr_curr < array.length){
+                nr_curr = $array[$i];
+                
+            }
+            //while()
+            for(var $i=0; $i < array.length; $i++){
+                //while
+            }
+        }
+        // console.log(randomArray(100));
+        console.log(randomArray(10, 150));
+
+        </script>
+    </body>
+
+</html>
