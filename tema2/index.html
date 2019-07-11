@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <title>Facebook</title>
+        <style>
+            html, body{
+                padding: 0;
+                margin: 0;
+            }
+            header{
+                background-color: #29487d;
+                color: white;
+                height: 80px;
+            }
+            .header-container{
+                max-width: 980px;
+                margin: 0 auto; 
+            }
+            .header-container > * {
+                float: left;
+                width: 50%;
+                height: 100%;
+            }
+            .logo-container{
+                height: 100%;
+            }
+            header .logo{
+                height: 100%;
+            }
+            .form-box{
+                display:flex;
+                flex-direction:row;
+            }
+            .email-container{
+                width: 40%;
+                padding:10px 3px;
+            }
+            .pass-container{
+                width: 40%;
+                padding:10px 3px;
+
+            }
+            .login-btn-container{
+                width: 20%; 
+                padding:10px 3px;
+            }
+            .login-btn-container > .input > input{
+                background-color: #4267b2;
+                border: solid 1px #29487d;
+                color: white;
+                padding: 3px;
+            }
+            .explanation{
+                color: #8ab0ff;
+            }
+            .leftSide, .rightSide{
+                width: 50%;
+                float: left;
+            }
+            /*  display: flex;
+                flex: 1;
+                
+                display: grid;  */
+            /* margin -> 0 sus si jos, auto stanga - dreapta */
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div class="header-container">
+                <div>
+                    <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmIToDDCJxDCrA3TYOJ0opKTABgeyL5a3jrTYRzj4gG_eaBYiyhg" alt="" />
+                </div>
+                <form class="form-box">
+                    <div class="email-container">
+                        <div class="label">Email or phone</div>
+                        <div class="input"><input type="text"/></div>
+                        <div class="explanation">&nbsp;</div>
+                    </div>
+                    <div class="pass-container">
+                        <div class="label">Password</div>
+                        <div class="input"><input type="text"/></div>
+                        <div class="explanation">Forgotten account?</div>
+                    </div>
+                    <div class="login-btn-container">
+                        <div class="label">&nbsp;</div>
+                        <div class="input"><input  type="button" value="Log in"></div>
+                        <div></div>
+                    </div>
+                </form>
+            </div>
+        </header>
+        <section>
+            <div class="mainContent">
+                <div class="leftSide">
+                    <p>Facebook helps you connect with other people.</p>
+                    <img src=""/>
+                </div>
+                <div class="rightSide">
+
+                </div>
+            </div>
+        </section>
+            <br style="clear: both;" /> 
+            <!-- clear: both  -->
+        <footer></footer>
+    </body>
+
+</html>

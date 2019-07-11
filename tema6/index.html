@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>Curs 6</title>
+
+        <style>
+            .hidden{
+                display:none;
+            }
+
+            .tab{
+                border-bottom: 1px grey solid;
+                padding: 5px 10px;
+                font: 24px;
+                cursor: pointer;
+                margin-left: -4.5px;
+            }
+
+            .active{
+                border: 1px grey solid;
+                border-bottom: none;
+            }
+        
+
+        </style>
+    </head>
+    <body>
+            <script>
+                function changeTabs(tabNr){
+                    var pageToBeActive = document.querySelector("section.page:nth-child("+(tabNr+1)+")");
+                    var pageToBeActive = document.querySelectorAll("section.page")[tabNr];
+
+                    var pageThatWasActive = document.querySelector("section.page:not(.hidden)");
+
+                    pageThatWasActive.classList.add("hidden");
+                    pageToBeActive.classList.remove("hidden");
+
+                    var tabToBeActive = document.querySelectorAll("a.tab")[tabNr];
+                    var tabThatWasActive = document.querySelector("a.tab.active");
+
+                    tabToBeActive.classList.add("active");
+                    tabThatWasActive.classList.remove("active");
+                }
+
+                function sorteazaVarsta(){
+                    lista.sort(function(a,b){
+                        return a.varsta-b.varsta;
+                    });
+                    draw();
+                }
+                function draw(){
+                    var str = "";
+                    for(var i=0; i<lista.length; i++){
+                        str+= `<tr>
+                                    <td>${lista[i].nume}</td>
+                                    <td>${lista[i].prenume}</td>
+                                    <td>${lista[i].varsta}</td>
+                                    <td>${lista[i].telefon}</td>
+                                </tr>`;
+                    }
+                    return str;
+                }
+            </script>
+    <div style="padding: 0px; margin: 0px;"> 
+        <a onclick="changeTabs(0)" class="tab active">Tab1</a>
+        <a onclick="changeTabs(1)" class="tab">Tab2</a>
+        <a onclick="changeTabs(2)" class="tab">Tab3</a>
+        <a onclick="changeTabs(3)" class="tab">Tab4</a>
+        <a onclick="changeTabs(4)" class="tab">Tab5</a>
+    </div>
+    <br />
+    <div>
+        <section class="page">Content for tab1</section>
+        <section class="page hidden">Content for tab2</section>
+        <section class="page hidden">Content for tab3</section>
+        <section class="page hidden">Content for tab4</section>
+        <section class="page hidden">Content for tab5</section>
+    </div>
+
+
+    </body>
+</html>

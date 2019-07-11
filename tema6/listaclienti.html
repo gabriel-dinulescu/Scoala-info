@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lista Clienti</title>
+		<style>
+			
+		</style>
+		<script>
+		
+			
+			var lista=[
+				{
+					nume:"Abs",
+					prenume:"Abs",
+					varsta:3,
+					telefon:"075000000"
+				},
+				{
+					nume:"Abs2",
+					prenume:"Abs2",
+					varsta:2,
+					telefon:"075000000"
+				},
+				{
+					nume:"Abs3",
+					prenume:"Abs3",
+					varsta:7,
+					telefon:"075000000"
+				},
+				{
+					nume:"Abs4",
+					prenume:"Abs4",
+					varsta:4,
+					telefon:"075000000"
+				}
+			];
+			function sorteazaPrenume(){
+				lista.sort(function(a,b){
+					if(a.prenume>b.prenume){
+						return 1;
+					} else if(a.prenume<b.prenume){
+						return -1;
+					} else{
+						return 0;
+					}
+				});
+				draw();
+			}
+			function sorteazaNume(){
+				lista.sort(function(a,b){
+					if(a.nume>b.nume){
+						return 1;
+					} else if(a.nume<b.nume){
+						return -1;
+					} else{
+						return 0;
+					}
+				});
+				draw();
+			}
+			function sorteazaVarsta(){
+				lista.sort(function(a,b){
+					return a.varsta-b.varsta;
+				});
+				draw();
+			}
+			function draw(){
+				var str = "";
+				for(var i=0;i<lista.length;i++){
+					str+=`<tr>
+						<td>${lista[i].nume}</td>
+						<td>${lista[i].prenume}</td>
+						<td>${lista[i].varsta}</td>
+						<td>${lista[i].telefon}</td>
+					</tr>`;
+					/*str+="<tr>"+
+						"<td>"+lista[i].nume+"</td>"+
+						"<td>"+lista[i].prenume+"</td>"+
+						"<td>"+lista[i].varsta+"</td>"+
+						"<td>"+lista[i].telefon+"</td>"+
+					"</tr>";*/
+				}
+				//console.log(str);
+				document.querySelector("#tabel tbody").innerHTML = str;
+			}
+			function counter(){
+				setInterval(function (){
+					var c = document.querySelector("#counter");
+					c.innerHTML=Number(c.innerHTML)+1;
+				},1000);
+			}
+		</script>
+	</head>
+	<body onload="draw();counter();">
+		<div id="counter"></div>
+		<table id="tabel" border="1" style="border-collapse:collapse;">
+			<thead>
+				<tr>
+					<th onclick="sorteazaNume()">Nume</th>
+					<th onclick="sorteazaPrenume()">Prenume</th>
+					<th onclick="sorteazaVarsta()">Varsta</th>
+					<th>Telefon</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Nume1</td>
+					<td>Prenume1</td>
+					<td>Varsta1</td>
+					<td>Telefon1</td>
+				</tr>
+				<tr>
+					<td>Nume2</td>
+					<td>Prenume2</td>
+					<td>Varsta2</td>
+					<td>Telefon2</td>
+				</tr>
+				<tr>
+					<td>Nume2</td>
+					<td>Prenume2</td>
+					<td>Varsta2</td>
+					<td>Telefon2</td>
+				</tr>
+				<tr>
+					<td>Nume2</td>
+					<td>Prenume2</td>
+					<td>Varsta2</td>
+					<td>Telefon2</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

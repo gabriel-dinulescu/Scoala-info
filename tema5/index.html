@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Validare Formular</title>
+        <style>
+            input[type="text"].invalid{
+                border-color: red;
+            }
+            input[type="radio"].invalid,select.invalid{
+                outline: 1px solid red;
+            }
+
+            /* outline: 1px solid red; */
+        </style>
+        <script>
+            function validate(formular, event){
+                //opreste modul de functionare default al acelui event
+                event.preventDefault();
+
+                var numeInput = document.querySelector("[name='nume']");
+                var nume = numeInput.value;
+
+                if(nume.length>=2){
+                    numeInput.classList.remove("invalid");
+                }else{
+                    numeInput.classList.add("invalid");
+                }
+
+                var prenumeInput = document.querySelector("[name='prenume']");
+                var prenume = prenumeInput.value;
+                if(prenume.length>=2){
+                    prenumeInput.classList.remove("invalid");
+                }else{
+                    prenumeInput.classList.add("invalid");
+                }
+
+                var telefonInput = document.querySelector("[name='telefon']");
+                telefon = telefonInput.value;
+                if(telefon.length >= 10){
+                    telefonInput.classList.remove("invalid");
+                } else {
+                    telefonInput.classList.add("invalid");
+                }
+
+                var emailInput = document.querySelector("[name='email']");
+                var email = emailInput.value;
+
+                if(email.indexOf("@") > 0 && email.indexOf("@") < (email.length-1)){
+                    emailInput.classList.remove("invalid");
+                } else {
+                    emailInput.classList.add("invalid");
+                }
+
+                if(document.querySelector("[name='sex'][value='M']").checked || document.querySelector("[name='sex'][value='F']").checked){
+                    document.querySelector("[name='sex'][value='M']").classList.remove('invalid');
+                    document.querySelector("[name='sex'][value='F']").classList.remove('invalid');
+                } else {
+                    document.querySelector("[name='sex'][value='M']").classList.add('invalid');
+                    document.querySelector("[name='sex'][value='F']").classList.add('invalid');
+                }
+
+                var culoareInput = document.querySelector("[name='culoare']");
+                var culoare = culoareInput.value;
+
+                if(culoare.length > 0){
+                    culoareInput.classList.remove('invalid');
+                } else{
+                    culoareInput.classList.add('invalid');
+                }
+
+            } 
+
+
+
+        </script>
+    </head>
+    <body>
+        <form onsubmit="validate(this, event)">
+            <fieldset >
+                <legend>Adauga cont</legend>
+                <label>Nume: <input type="text" name="nume"/></label> <br />
+                <label>Prenume: <input type="text" name="prenume"/></label> <br />
+                <label>Nr. telefon: <input type="text" name="telefon"/></label> <br />
+                <label>Email: <input type="text" name="email"/></label> <br />
+                <label>Sex: <br />
+                    <input type="radio" value="M" name="sex"/>M<br />
+                    <input type="radio" value="F" name="sex"/>F<br />
+                </label> <br />
+                <label>Culoarea favorita:
+                    <select name="culoare">
+                        <option value="">[ Alege ]</option>
+                        <option value="rosu">Rosu</option>
+                        <option value="verde">Verde</option>
+                        <option value="galben">Galben</option>
+                    </select>
+                </label> <br />
+                <label>T&C: <input type="checkbox" /></label> <br />
+                <label>Comentariu: <textarea name="comentarii" ></textarea></label> <br />
+                <input type="submit" value="Salveaza">
+            </fieldset>
+        </form>
+    </body>
+</html>

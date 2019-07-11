@@ -1,0 +1,316 @@
+<html>
+    <head>
+        <title>Tema Javscript part 2</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <script>
+            /*
+            O functie care primeste un sir de caractere si returneaza cifrele din sirul respectiv cand operator = 0 si returneaza string cand operator = 1
+            */
+           var string = 'abcs4sf2gr3xzv4';
+            function returnNr(string){
+                var i = 0;
+                var value = '';
+                while(i < string.length){
+                    if(!isNaN(string[i])){
+                        value += string[i];
+                    }
+                    i++;
+                }
+                return value;
+            }
+            
+            function returnStr(string){
+                var i = 0;
+                var value = '';
+                while(i < string.length){
+                    if(isNaN(string[i])){
+                        value += string[i];
+                    }
+                    i++;
+                }
+                return value;
+            }
+
+            /*
+            O functie care primeste un sir de caractere si returneaza primele 5 litere(daca exista)
+            */
+            function stringFive(string){
+                var something = '';
+                var i = 0;
+                if(string.length >= 5){
+                    while(i < 5){
+                        something[i] = string[i];
+                        i++;
+                    }
+                }
+
+                return something;
+
+            }
+            var array2=['2vdsv4', 'c6dsg43', 'casfaf4'];
+            //array1.concat(array2);
+
+            /*
+            O functie care primeste o lista de siruri de caractere si returneaza sirurile concatenate
+            */
+            function concatStrings(array){
+                var concatString = '';
+                for(let i = 0; i < array.length; i++){
+                    concatString += array[i];
+                }
+                return concatString;
+            }
+
+                        /*
+            O functie care primeste un parametru de tip string si intoarce inversul acestuia (abc => cba)
+            */
+
+            function inverseString(string){
+
+                var inverse = '';
+                var i  = (string.length - 1)
+                while(i >= 0){
+                    inverse += string[i];
+                    i--
+                }
+
+                return inverse;
+
+            }
+
+
+            /*
+            O functie care primeste o lista de siruri de caractere si returneaza cifrele din toate sirurile
+            */
+            function returnNumbers(array){
+                //array
+                var numbers = '';
+                
+                for(let i = 0; i < array.length; i++){
+                    numbers += returnNr(array[i]);
+                }
+
+                return numbers;
+            
+            }
+
+            /*
+            O functie care primeste o lista de siruri de caractere si returneaza lista de siruri de caractere inversate
+            */
+            function listInverse(lista) {
+                
+                for(let i = 0; i < lista.length; i++){
+                    lista[i] = inverseString(lista[i]);
+                }
+
+                return lista;
+            }
+
+            /*
+            Calculeaza factorialul unui numar
+            */
+            function factorialNr(nr){
+                //fie var produs pentru factorial
+                var produs = 1;
+                if(nr === 0 || isNaN(nr)){
+                    return false;
+                } else{
+                    for(let i = nr; i > 0; i--){
+                        produs *= i;
+                    }
+                }
+
+                return produs;
+            }
+
+            /*
+            Calculeaza cel mai mare divizor comun al 2 numere greatest common divizor
+            */
+            function gcd(a, b){
+                //daca a sau b sunt 0 return false
+                if(a === 0 || b === 0) return 0;
+                var divizor;
+                var nr;
+                //verificam care numar este mai mic si diviziunea de la el
+                if(a > b){
+                    var nr = b;
+                } else if(a < b){
+                    var nr = a;
+                }
+
+                //daca rest de a si b impartit la nr este 0 atunci am gasit cel mai mare divizor comun
+                for(let i = nr; i > 0; i--){
+                    if(a%i === 0 && b%i === 0){
+                        divizor = i;
+                        break;
+                    } 
+                }
+                if(divizor === 1) console.log('numerele sunt coprime');
+                return divizor;      
+
+            }
+
+            /*
+            *Calculeaza cel mai mic multiplu comun al 2 numere
+            */
+            function lcm(a, b){ 
+                //lowest common multiple
+                var lcm;
+                //calcul
+                lcm = (a*b)/gcd(a, b);
+                //return
+                return lcm;
+            }
+
+
+            /*
+            *Returneaza un array care sa contina toti divizorii unui numar
+            */
+           function allDivisors(nr){
+                var divizori = [];
+
+            /*
+            *Verifica daca un nr este prim
+            *Accepta parametru num
+            */
+            function checkPrime(num) {
+                    //verifica ptr 1
+                    if(num <= 1) return false;
+                    //verifica de la 2 pana la radacina numarului
+                    for(var i = 2; i <= Math.sqrt(num); i++){
+                        if(num % i === 0) return false; 
+                        }
+                    //daca parcurge for intoarce true
+                    return true;
+                }
+
+            //verificam daca nu este numar sau daca este numar prim
+            if(isNaN(nr) || checkPrime(nr) === true){
+                return false;
+            }
+            //verificam restul la impartire la toate nr incepand de la 2;
+            for(let i = 2; i < nr; i++){
+                if(nr%i === 0){
+                    divizori.push(i);
+                }
+            }
+
+            return divizori;
+
+           }
+
+           /*
+           *    O functie care verifica daca un numar este palindrom (ex: )
+           */
+
+           function palindrome(nr){
+                var s = nr.toString();
+                var p = '';
+                for(let i = (s.length-1); i >= 0; i-- ){
+                    p += s[i];
+                }
+                console.log(p);
+                if(nr === Number(p)){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+           }
+
+           var array = [2, 5, 10, 7, 16, 8, 24, 9, 6, 17, 91, 30];
+
+           /*
+           *    O functie care sorteaza numerele pare dintr-un sir de numere primit ca parametru.
+           */
+           function pairedNumbers(array){
+               //pare
+               var paired = [];
+               //impare
+               var unpaired = [];
+               //lungime array
+               var length = array.length;
+
+               var i = 0;
+                    while(i < length){
+                        if(array[i]%2 === 0){
+                            console.log(array[i]);
+                            paired.push(array[i]);
+                            // let index = array.indexOf(array[i]);
+                            // array.splice(index, 1);
+                        } else {
+                            unpaired.push(array[i]);
+                        }
+                        i++;
+                    }
+               paired.sort(function(a, b){return a - b});
+               var result = paired.concat(unpaired);
+               return result;
+           }
+
+           /*
+           * O functie care primeste ca parametru un array si un numar
+           * care sorteaza numere pare crescator si numere impare descrescator
+           */
+           var testArray = [4, 2, 8, 6];
+
+           function orderNr(array){
+            //variabile
+            var paired = [];
+            var unpaired = [];
+            for(var i = 0; i < array.length; i++){
+                if(array[i]%2 === 0){
+                            paired.push(array[i]);
+                            // let index = array.indexOf(array[i]);
+                            // array.splice(index, 1);
+                        } else {
+                            unpaired.push(array[i]);
+                        }
+            }
+            paired.sort(function(a, b){return a - b});
+            unpaired.sort(function(a, b){return b - a});
+            var result = paired.concat(unpaired);
+            return result;
+           }
+           /*
+           *O functie care primeste 2 parametri(un array si un numar). 
+           *Folosind binary search verificati daca numarul primit ca parametru se gaseste in array. 
+           *indexBinary contorizeaza de cate ori a fost apelata functia
+           */
+           var indexBinary = 0;
+
+           function binarySearch(array, nr){
+                var start = 0;
+                var end = array.length-1;
+                array.sort(function(a, b){return a - b});
+
+                while(start <= end){
+                    let mid = Math.floor((start + end)/2);
+
+                    //daca elementul este in mijloc
+                    if(array[mid] === nr){
+                        console.log(indexBinary);
+                        indexBinary = 0;
+                        return true;
+                    } else if (array[mid] < nr) {
+                        start = mid + 1;
+                        indexBinary++;
+                    } else {
+                        end = mid - 1;
+                        indexBinary++;
+                    }
+                }
+
+               return false;
+           }
+
+           
+
+
+        </script>
+    </body>
+
+</html>

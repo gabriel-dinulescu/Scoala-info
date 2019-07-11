@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <style>
+            table, td{
+                border: 1px solid black;
+                padding: none;
+                margin: none;
+            }
+            .invalid {
+                background-color: red;
+            }
+            .imagine{
+                background-image: url("http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+            }
+
+            .imagine2{
+                background-image: url("http://www.drodd.com/images14/x12.jpg");
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+            }
+        </style>
+        <script>
+            function clickMe(){
+                var inputName = document.getElementById("name");
+                var paragraf = document.getElementById("paragraf");
+                if(inputName.value === ""){
+                    inputName.classList.add("invalid");
+                }
+                else{
+                    paragraf.classList.add("invalid");
+                    inputName.classList.remove("invalid");
+                    paragraf.innerHTML = "Hello " + inputName.value;
+                }
+                document.querySelector("#name");
+                console.log(document.querySelectorAll("span"));
+            }
+
+            function schimbaimaginea(event, elem){
+
+                elem.classList.remove("imagine");
+                elem.classList.add("imagine2");
+            }
+
+            function schimbaimaginea2(event, elem){
+
+                elem.classList.remove("imagine2");
+                elem.classList.add("imagine");
+            }
+
+
+        </script>
+
+    </head>
+
+    <body>
+        <!-- <input id="name" name="name" type="text" />
+        <button onclick="clickMe();">Click me!</button>
+        <p id="paragraf"></p> -->
+
+        <table style="height: 600px; width: 600px;">
+            <tr>
+                <td onmouseover="schimbaimaginea(event,this)" onmouseout="schimbaimaginea2(event,this)" class="imagine"></td>
+                <td onmouseover="schimbaimaginea(event,this)" onmouseout="schimbaimaginea2(event,this)" class="imagine"></td>
+                <td onmouseover="schimbaimaginea(event,this)" onmouseout="schimbaimaginea2(event,this)" class="imagine"></td>
+            </tr>
+            <tr>
+                <td onmouseover="schimbaimaginea(event,this)" onmouseout="schimbaimaginea2(event,this)" class="imagine"></td>
+                <td onmouseover="schimbaimaginea(event,this)" onmouseout="schimbaimaginea2(event,this)" class="imagine"></td>
+                <td onmouseover="schimbaimaginea(event,this)" onmouseout="schimbaimaginea2(event,this)" class="imagine"></td>
+            </tr>
+            <tr>
+                <td onmouseover="schimbaimaginea(event,this)" onmouseout="schimbaimaginea2(event,this)" class="imagine"></td>
+                <td onmouseover="schimbaimaginea(event,this)" onmouseout="schimbaimaginea2(event,this)" class="imagine"></td>
+                <td onmouseover="schimbaimaginea(event,this)" onmouseout="schimbaimaginea2(event,this)" class="imagine"></td>
+            </tr>
+        </table>
+    </body>
+</html>
