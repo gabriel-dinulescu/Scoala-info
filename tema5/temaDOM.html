@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tema DOM</title>
+        <style>
+            input[type="text"].invalid{
+                border-color: red;
+                background-color: #f8d7da;
+            }
+            input[type="text"].valid{
+                border-color: green;
+                background-color: #d4edda;
+            }
+
+            /* outline: 1px solid red; */
+        </style>
+        <script>
+
+            /*
+            * Pastrati doar 2 inputuri si colorati ambele inputuri verzi daca valoarea din casuta 1 si din casuta 2 sunt egale 
+            */
+            function validate1(formular, event){
+                //opreste modul de functionare default al acelui event
+                event.preventDefault();
+                var input1 = formular.querySelector("[name='input1']");
+                var input1Value = input1.value;
+                var input2 = formular.querySelector("[name='input2']");
+                var input2Value = input2.value;
+                if(Number(input1Value) === Number(input2Value)){
+                    input1.classList.add("valid");
+                    input2.classList.add("valid");
+                } else {
+                    input1.classList.remove("valid");
+                    input2.classList.remove("valid");
+                }
+            }
+
+            /*
+            * Pastrati doar 2 inputuri si colorati inputul care are valoarea mai mare. Daca sunt egale, colorati-le pe ambele
+            */
+
+            function validate2(formular, event){
+                event.preventDefault();
+                var input1 = formular.querySelector("[name='input1']");
+                var input1Value = input1.value;
+                var input2 = formular.querySelector("[name='input2']");
+                var input2Value = input2.value;
+                input1.classList.remove("valid"), input2.classList.remove("valid"); 
+                if(Number(input1Value) > Number(input2Value)){
+                    input1.classList.add("valid");
+                } else if (Number(input1Value) < Number(input2Value)){
+                    input2.classList.add("valid");
+                } else {
+                    input1.classList.add("valid");
+                    input2.classList.add("valid");
+                }
+            }
+
+            /*
+            * Pastrati doar 3 inputuri si afisati in al 3-lea input valoarea inputului mai mare dintre primul si al doilea
+            */ 
+            function validate3(formular, event){
+                event.preventDefault();
+                var val1 = formular.querySelector("[name='input1']").value;
+                var val2 = formular.querySelector("[name='input2']").value;
+                var output = formular.querySelector("[name='input3']");
+                output.value = '';
+                if(Number(val1) > Number(val2)){
+                    output.value = val1;
+                } else if(Number(val1) < Number(val2)){
+                    output.value = val2;
+                }
+            }
+
+            /*
+            * Pastrati doar 3 inputuri si afisati in al 3-lea input suma primului + celui de-al 2-lea  input 
+            */
+            function validate4(formular, event){
+                event.preventDefault();
+                var val1 = formular.querySelector("[name='input1']").value;
+                var val2 = formular.querySelector("[name='input2']").value;
+                var output = formular.querySelector("[name='input3']");
+                output.value = '';
+                if(!isNaN(val1) && !isNaN(val2) && val1 != '' && val2 != ''){
+                    output.value = Number(val1) + Number(val2);
+                } else {
+                    formular.reset();
+                }
+            }
+
+            /*
+            * Pastrati doar 1 input si afisati intr-un span/div in coltul dreapta jos, lungimea sirului de caractere tastat.
+            */
+            function validate5(formular, event){
+                event.preventDefault();
+                var value = formular.querySelector("[name='input']").value;
+                //console.log(value);
+                var span = formular.querySelector("div span");
+                //console.log(span);
+                span.innerText = '';
+                if(value != ''){
+                    value = value.split("");
+                    span.innerText = value.length;
+                }
+            }
+            /*
+            * Plecand de la ex 5, limitati numarul de caractere la 10. In momentul in care am ajuns la 10, inrositi counterul si folosind event.preventDefault() pe evenimentul onkeypress opriti utilizatorul sa mai introduca caractere in plus
+            */
+
+            function validate6(input, event){
+                var value = input.value;
+                value = value.split("");
+                input.classList.remove("invalid");
+                if(value.length > 9){
+                    input.classList.add("invalid");
+                    event.preventDefault();
+                }
+            }
+
+            /*
+            * Pastrati doar 1 input si folosind event.preventDefault pe evenimentul onkeypress, opriti utilizatorul sa mai introduca orice altceva decat numere. (tip: puteti sa gasiti caracterul tastat in event.key)
+            */
+            function validate7(input, event){
+                event.preventDefault();
+                var key = event.key;
+                console.log(key); 
+                var value = input.value;
+                console.log(value);
+                if(!isNaN(key)){
+                    input.value += key.toString();
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+        <h1 style="text-align: center;">Tema DOM</h1>
+        <!-- Pastrati doar 2 inputuri si colorati ambele inputuri verzi daca valoarea din casuta 1 si din casuta 2 sunt egale  -->
+        <form onsubmit="validate1(this, event)">
+            <fieldset >
+                <legend>Exercitiu 1</legend>
+                <label>Input 1: <input type="text" name="input1"/></label><br />
+                <label>Input 2: <input type="text" name="input2"/></label><br /> 
+                <input type="submit" value="Salveaza">
+            </fieldset>
+        </form>
+        <br />
+        <!-- Pastrati doar 2 inputuri si colorati inputul care are valoarea mai mare. Daca sunt egale, colorati-le pe ambele -->
+        <form onsubmit="validate2(this, event)">
+            <fieldset >
+                <legend>Exercitiu 2</legend>
+                <label>Input 1: <input type="text" name="input1"/></label><br />
+                <label>Input 2: <input type="text" name="input2"/></label><br />
+                <input type="submit" value="Salveaza">
+            </fieldset>
+        </form>
+        <br />
+        <!-- Pastrati doar 3 inputuri si afisati in al 3-lea input valoarea inputului mai mare dintre primul si al doilea -->
+        <form onsubmit="validate3(this, event)">
+                <fieldset >
+                    <legend>Exercitiu 3</legend>
+                    <label>Input 1: <input type="text" name="input1"/></label><br />
+                    <label>Input 2: <input type="text" name="input2"/></label><br />
+                    <label>Input 3(afisare): <input type="text" name="input3"/></label><br />
+                    <input type="submit" value="Salveaza">
+                </fieldset>
+        </form>
+        <br />
+        <!-- Pastrati doar 3 inputuri si afisati in al 3-lea input suma primului + celui de-al 2-lea  input  -->
+        <form onsubmit="validate4(this, event)">
+                <fieldset >
+                    <legend>Exercitiu 4</legend>
+                    <label>Input 1: <input type="text" name="input1"/></label><br />
+                    <label>Input 2: <input type="text" name="input2"/></label><br />
+                    <label>Input 3(suma): <input type="text" name="input3"/></label><br />
+                    <input type="submit" value="Salveaza">
+                </fieldset>
+        </form>
+        <br />
+        <!-- Pastrati doar 1 input si afisati intr-un span/div in coltul dreapta jos, lungimea sirului de caractere tastat. -->
+        <form onsubmit="validate5(this, event)">
+                <fieldset >
+                    <legend>Exercitiu 5</legend>
+                    <label>Input 1: <input type="text" name="input"/></label><br />
+                    <input type="submit" value="Salveaza"><div style="float: right;">Numar caractere: <span></span></div>
+                </fieldset>
+        </form>
+        <br />
+        <!-- Plecand de la ex 5, limitati numarul de caractere la 10. In momentul in care am ajuns la 10, inrositi counterul si folosind event.preventDefault() pe evenimentul onkeypress opriti utilizatorul sa mai introduca caractere in plus -->
+        <form>
+            <fieldset >
+                <legend>Exercitiu 6</legend>
+                <label>Input 1: <input type="text" onkeypress="validate6(this, event)" name="input"/></label><br />
+                <input type="submit" value="Salveaza">
+            </fieldset>
+        </form>
+        <br />
+        <!-- Pastrati doar 1 input si folosind event.preventDefault pe evenimentul onkeypress, opriti utilizatorul sa mai introduca orice altceva decat numere. (tip: puteti sa gasiti caracterul tastat in event.key) -->
+        <form>
+            <fieldset >
+                <legend>Exercitiu 7</legend>
+                <label>Input 1: <input type="text" onkeypress="validate7(this, event)" name="input"/></label><br />
+                <input type="submit" value="Salveaza">
+            </fieldset>
+        </form>
+        <br />
+    </body>
+</html>
