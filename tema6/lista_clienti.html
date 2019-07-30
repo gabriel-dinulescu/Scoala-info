@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lista Cumparaturi</title>
+		<style>
+			.hidden{
+				display:none;
+			}
+			div#table-view{
+				text-align: center;
+			}
+			#tabel{
+				margin-left: 38%;
+				margin-right: 30%;
+			}
+			#table-view input.del{
+				background-color:red;
+				color:white;
+				border-radius: 5px;
+				padding: 5px;	
+			}
+			#table-view input.edit{
+				background-color:blue;
+				color:white;
+				border-radius: 5px;
+				padding: 5px;	
+			}
+			input[value="+ Adauga"]{
+				background-color: green;
+				color: white;
+				border-radius: 10px;
+				padding: 5px;	
+			}
+		</style>
+		<script>
+			//array in care stochez personale si numerele de telefon
+			var lista=[
+				{
+					nume:"Ion",
+					prenume:"Gheorghe",
+					varsta:24,
+					telefon:"075000000"
+				},
+				{
+					nume:"Trita",
+					prenume:"Fanita",
+					varsta:60,
+					telefon:"075000001"
+				},
+				{
+					nume:"Suie",
+					prenume:"Paparude",
+					varsta:7,
+					telefon:"075000002"
+				},
+				{
+					nume:"Britney",
+					prenume:"Spears",
+					varsta:35,
+					telefon:"075000003"
+				}
+			];
+			//o variabila globala in care sa tin minte pentru ce rand editez, in care contrar ia valoare -1
+			var idxEditare = -1;
+			
+			function sorteazaPrenume(){
+				//parametrul care il dau functiei de sort este o functie care primeste 2 elemente din lista, 
+				//nu conteaza care si care; functia trebuie sa returneze ceva >0 daca a>b, ceva <0 daca a<b si 0 daca a==b
+				lista.sort(function(a,b){
+					if(a.prenume>b.prenume){
+						return 1;
+					} else if(a.prenume<b.prenume){
+						return -1;
+					} else{
+						return 0;
+					}
+				});
+				draw();
+			}
+			//Sorteaza Nume
+			function sorteazaNume(){
+				lista.sort(function(a,b){
+					if(a.nume>b.nume){
+						return 1;
+					} else if(a.nume<b.nume){
+						return -1;
+					} else{
+						return 0;
+					}
+				});
+				draw();
+			}
+			function sorteazaVarsta(){
+				//pentru ca varsta este numeric, pot sa scad cele 2 varste si sa imi dea 
+				//ceva >0 daca varsta lui a>varsta lui b, 
+				//0 daca sunt egale,
+				//<0 daca varsta lui a <varsta lui b
+				lista.sort(function(a,b){
+					return a.varsta-b.varsta;
+				});
+				draw();
+			}
+			function draw(){
+				//functia care imi actualizeaza tabelul (interfata) ori de cate ori se modifica lista mea de persoanele
+				//cu ${variabila} inserez in tabelul html
+				//parcurg lista si pentru fiecare element al listei creez cate o bucatica de html
+				var str = "";
+				for(var i=0;i<lista.length;i++){
+					str+=`<tr>
+						<td>${lista[i].nume}</td>
+						<td>${lista[i].prenume}</td>
+						<td>${lista[i].varsta}</td>
+						<td>${lista[i].telefon}</td>
+						<td>
+							<input class="del" type="button" value="Del" onclick="sterge(${i});" />
+							<input class="edit" type="button" value="Edit" onclick="editeaza(${i});" />
+						</td>
+					</tr>`;
+				}
+				console.log(str);
+				document.querySelector("#tabel tbody").innerHTML = str;
+			}
+			function sterge(aaa){
+				if(confirm(`Esti sigur ca vrei sa stergi inregistrarea ${lista[aaa].nume} ?`)){
+					lista.splice(aaa,1);
+					draw();
+				}
+			}
+			function editeaza(idx){
+				//salvez indexul elementului din lista in variabila globala 
+				//ca sa stiu daca trebuie sa adaug la sfarsit sau sa modific
+				window.idxEditare = idx;
+				afiseazaFormular();
+				
+				//preiau elementul din lista
+				var obj = lista[idx];
+				
+				//preiau referinta catre formular
+				var form = document.querySelector("#add-form");
+				
+				//populez formularul cu ce contine persoana mea
+				form.querySelector("[name='nume']").value = obj.nume;
+				form.querySelector("[name='prenume']").value =obj.prenume;
+				form.querySelector("[name='telefon']").value = obj.telefon;
+				form.querySelector("[name='varsta']").value =obj.varsta;
+			}
+			function afiseazaFormular(){
+				//resetez formularul sa nu ramana ce am scris data trecuta in el
+				document.querySelector("#add-form").reset();
+				
+				//ascund tabelul si afisez formularul
+				document.querySelector("#add-form").classList.remove("hidden");
+				document.querySelector("#table-view").classList.add("hidden");
+			}
+			function afiseazaTabel(){
+				//ascund formularul si afisez tabelul
+				document.querySelector("#add-form").classList.add("hidden");
+				document.querySelector("#table-view").classList.remove("hidden");
+			}
+			function adauga(form,event){
+				//prevenim reincarcarea paginii
+				event.preventDefault();
+				
+				//preiau info din formular
+				var obj = {
+				};
+				obj.nume = form.querySelector("[name='nume']").value;
+				obj.prenume = form.querySelector("[name='prenume']").value;
+				obj.telefon = form.querySelector("[name='telefon']").value;
+				obj.varsta = form.querySelector("[name='varsta']").value;
+				
+				//daca index editare e -1 inseamna ca nu editez nimic, ci adaug ceva nou (la sfarsit)
+				if(idxEditare===-1){
+					//cand este idxEditare -1 atunci inseamna ca adaug
+					lista.push(obj);
+				}else{
+					//cand este idxEditare diferit de -1 atunci inseamna ca editez pozitia idxEditare
+					lista[idxEditare] = obj;
+					//resetam idxEditare in -1 pentru ca am terminat cu editarea
+					idxEditare = -1;
+				}
+				
+				draw();
+				afiseazaTabel()
+			}
+		</script>
+	</head>
+	<body onload="draw();">
+		<form id="add-form" onsubmit="adauga(this,event);">
+			<fieldset>
+					<legend>Adauga cont</legend>
+					<label for="nume">Nume: </label><input id="nume" type="text" name="nume"/> <br />
+					<label>Prenume: <input type="text" name="prenume"/></label> <br />
+					<label>Numar telefon: <input type="tel" name="telefon"/></label> <br />
+					<label>Varsta: <input type="number" name="varsta"/></label> <br />
+						
+					<input type="submit" value="Salveaza"/>
+					<input type="button" value="Anuleaza" onclick="afiseazaTabel();"/>
+			</fieldset>
+		</form>
+		<div id="counter" class="hidden"></div>
+		
+		<div id="table-view">
+			<br />
+			<h2>Lista persoane</h2>
+			<table  id="tabel" border="1" style="border-collapse:collapse;">
+				<thead>
+					<tr>
+						<th onclick="sorteazaNume()">Nume</th>
+						<th onclick="sorteazaPrenume()">Prenume</th>
+						<th onclick="sorteazaVarsta()">Varsta</th>
+						<th>Telefon</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
