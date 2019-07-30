@@ -1,0 +1,58 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: rgb(207, 120, 207);
+}
+
+#item{
+    padding: 10px 10px;
+}
+
+
+.center{
+    text-align: center;
+}
+
+.container {
+    margin-top: 20px;
+    margin-left:25%;
+    margin-right:25%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 60px;
+    background-color: white;
+  }
+
+  .add{
+    background-color: rgb(57, 230, 57);
+    color: black;
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+
+#tabel{
+    margin-left: 25%;
+    margin-right: 25%;
+}
+.marked{
+    text-decoration: line-through;
+}
+
+.mark{
+    padding: 3px 10px;
+    border-radius: 10px;
+    background-color: rgba(228, 129, 129, 0.89)
+}
+
+tr, td{
+    text-align: left;
+}
+
+.sort{
+    background-color: rgb(69, 69, 240);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+}

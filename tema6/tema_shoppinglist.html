@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Proiect Shopping List</title>
+        <link rel="stylesheet" type="text/css" href="style2.css">
+        <script type="text/javascript" src="scripts2.js"></script>
+    </head>
+    <body>
+        <div class="container center">
+                <header class="center"><h1>Shopping List</h2></header>
+                <form id="add-form" class="form center" onsubmit="adauga(this,event);">
+                    <input id="item" type="text" name="item"/>&nbsp;&nbsp;
+                    <input class="add" type="submit" value="Add item"/>
+                </form>
+                <br />
+                <div>
+                    <button class="sort" onclick="sortAsc();">Sort asc</button>&nbsp;<button class="sort" onclick="sortDesc();">Sort desc</button>
+                </div>
+                <br />
+                <table id="tabel" border="0">
+                    <thead>
+                        <tr>
+                            <th>Item description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+        </div>
+        <br />
+    </body>
+
+
+
+</html>
