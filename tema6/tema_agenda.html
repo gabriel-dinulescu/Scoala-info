@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Proiect Agenda</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="scripts.js"></script>
+    </head>
+    <body onload="draw();">
+        <header class="center"><h1>AGENDA</h2></header>
+        <!-- <div class="mesaj hidden" id="error"><ul></ul></div> -->
+        <div class="container">
+                <form id="add-form" class="form" onsubmit="adauga(this,event);">
+                        <fieldset>
+                                <div class="center">
+                                    <label for="nume">Nume: </label><input id="nume" type="text" name="nume"/>&nbsp;
+                                    <label>Numar telefon: <input type="tel" name="telefon"/></label> 
+                                </div>
+                                <br />
+                                <div class="center">
+                                    <input class="add" type="submit" value="Salveaza"/>
+                                </div>
+                        </fieldset>
+                </form>
+                <button class="reset" onclick="event, reset(-1);">Anuleaza</button>
+        </div>
+        <br />
+        <div id="table-container" class="container hide">
+                <table id="tabel" border="0" style="border-collapse:collapse;">
+                    <thead>
+                        <tr>
+                            <th>Nume</th>
+                            <th>Telefon</th>
+                            <th width="15%"></th>
+                            <th width="15%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+        </div>
+    </body>
+
+
+
+</html>
