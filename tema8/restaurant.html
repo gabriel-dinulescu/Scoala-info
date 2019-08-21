@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="scripts.js"></script>
+        
+    </head>
+
+    <body onload="ajax();">
+        <div class="container-page">
+            <div class="container-head">
+                <div class="container-left">
+                    <h2>Cald si Bun</h2><br />
+                    <form onsubmit="cautare(this, event);">
+                        <input type="text" class="search" name="search" />
+                        <input type="submit" class="form-button" value="Cauta in ingrediente" />
+                    </form>
+                </div>
+                <div class="container-right">
+                    <a href="contact.html"><input type="button" value="Contact"/></a>
+                </div>
+            </div>
+            <div class="container-body">
+                <table id="tabel">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

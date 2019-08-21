@@ -1,0 +1,46 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+.container-page{
+    margin: 0px;
+    padding: 10px 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-head{
+    margin: 0px;
+    padding: 4px 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#tabel, th, td{
+    border-collapse: collapse;
+    padding: 5px 20px;
+}
+
+#tabel{
+    width: 100%;
+    height: auto;
+}
+
+.container-tabel{
+    display: flex;
+    flex-direction: column;
+}
+.container-tabel > div{
+    margin-top: 10px;
+}
+
+.container-tabel > div:first-child{
+    font-weight: bold;
+}
+
+.imagine{
+    width: 200px;
+    height: auto;
+}
