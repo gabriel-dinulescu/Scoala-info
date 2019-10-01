@@ -114,3 +114,8 @@ span.alert{
     color: red;
 }
 
+div.buttons{
+    display: flex;
+    flex-direction: row;
+    padding: 0px 15px;
+}

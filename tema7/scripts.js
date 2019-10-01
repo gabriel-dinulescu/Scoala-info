@@ -68,6 +68,8 @@ function showNote(id){
     var modal = document.getElementById("myModal");
     var titlu = document.getElementById("titlu-modal");
     var inputID = document.querySelector("[name='id']");
+    modal.querySelector("div.buttons button[data-sort='ascendent']").setAttribute('data-id', id);
+    modal.querySelector("div.buttons button[data-sort='descendent']").setAttribute('data-id', id);
     inputID.value = id;
     modal.style.display = "block";
 
@@ -113,4 +115,16 @@ function addNota(form, event){
         form.querySelector("[name='note']").value = '';
     }
     draw2(studentID);
+}
+
+function sort(button){
+ var id = button.getAttribute('data-id');
+ var sort = button.getAttribute('data-sort');
+ if(sort === 'ascendent'){
+     listaStudenti[id].note.sort(function(a, b){return a - b});
+     draw2(id);
+ } else if(sort === 'descendent'){
+    listaStudenti[id].note.sort(function(a, b){return b - a});
+    draw2(id);
+ }
 }

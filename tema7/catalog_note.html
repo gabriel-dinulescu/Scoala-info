@@ -4,7 +4,7 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" type="text/css" href="style.css" />
         <script src="scripts.js" type="text/javascript"></script>
-        
+
     </head>
     <!-- onload se apeleaza functia draw -->
     <body onload="draw();">
@@ -56,6 +56,10 @@
                                     <span id="alert-note" class="alert"></span>
                                 </div>
                             </form>
+                                <div class="buttons">
+                                    <button data-id="" data-sort="ascendent" onclick="sort(this);">Sorteaza ascendent</button>
+                                    <button data-id="" data-sort="descendent" onclick="sort(this);">Sorteaza descendent</button>
+                                </div>
                             <table id="tabelNote">
                                 <thead>
                                     <tr>
