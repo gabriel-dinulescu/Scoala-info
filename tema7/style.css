@@ -1,0 +1,116 @@
+.container-page{
+    margin: 0px;
+    padding: 5px 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-head{
+    padding: 10px 0px;
+    text-align: center;
+}
+
+.container-row{
+    padding: 3px 16px;
+    display: flex;
+    flex-direction: row;
+}
+
+table thead tr th, table tbody tr td{
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+} 
+
+th{
+    cursor: pointer;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* The modal (background) */
+.modal-calilab{
+    display: none; /*Hidden*/
+    position: fixed; /*Stay in place*/
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /*Enable scroll */
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.3); /*Negru cu opacitate*/
+}
+
+/* Modal content Box */
+.modal-content-calilab{
+    position: relative;
+    background-color: #fefefe;
+    margin: 5% auto; /* 15% from the top and center */
+    padding: 0px;
+    border: 1px solid #888;
+    width: 50%;
+}
+
+.close-calilab{
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    background-color: inherit;
+    border: none;
+}
+
+.close-calilab:hover,
+.close-calilab:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header-calilab{
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+    text-align: center;
+}
+
+.modal-body-calilab{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 10px auto;
+}
+
+#formular{
+    display: flex;
+    flex-direction: row;
+    padding: 3px 16px;
+    justify-content: center;
+}
+
+.input-container{
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+input[type="text"].insert{
+    padding: 5px;
+}
+            
+input[type="submit"].form-confirm{
+    background-color: #5cb85c;
+    color: white;
+    border: 1px grey solid;;
+    border-radius: 10px;
+    padding: 3px 10px;
+}
+
+span.alert{
+    display: none;
+    color: red;
+}
+
