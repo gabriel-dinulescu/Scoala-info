@@ -299,9 +299,6 @@
                     document.getElementById('tempCurr').innerText = response.main.temp;
                     document.getElementById('min').innerText = response.main.temp_min;
                     document.getElementById('max').innerText = response.main.temp_max;
-                    lat = Number.parseFloat(response.coord.lat);
-                    lng = Number.parseFloat(response.coord.lon);
-                    // initMap(lat, lng);
                 });
             }
             //prognoza meteo in timp
@@ -375,22 +372,5 @@
 
             </div>
         </div>
-       <!-- <script>
-      function initMap(lat, lng) {
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-        center: {
-            lat: lat,
-            lng: lng
-        },
-        zoom: 13,
-        mapTypeId: 'roadmap'
-    });
-    }
-       </script> 
-
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBo0B90J2IGmS4K0Nb70sALX7vJQKHRumc">
-        </script> -->
     </body>
 </html>
