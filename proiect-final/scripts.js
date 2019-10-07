@@ -170,9 +170,9 @@ async function drawCart(){
             output += `<tr>
                             <th scope="row">${response[key].name}</th>
                             <td>${response[key].price} RON</td>
-                            <td><button onclick="decrease(${key}, this);">-</button> <span data-type="qty">${cartProducts[key].qty}</span> <button onclick="increase(${key}, this);">+</button></td>
+                            <td><button onclick="decrease('${key}', this);">-</button> <span data-type="qty">${cartProducts[key].qty}</span> <button onclick="increase('${key}', this);">+</button></td>
                             <td><span data-type="subtotal">${cartProducts[key].qty*response[key].price} RON</span></td>
-                            <td><button onclick="remove(${key});" class="btn btn-danger col-12">Remove</button></td>
+                            <td><button onclick="remove('${key}');" class="btn btn-danger col-12">Remove</button></td>
                         </tr>`;
                         nrValue += Number(cartProducts[key].qty);
                         totalValue += (nrValue*Number(response[key].price));
@@ -262,7 +262,7 @@ async function drawAdmin(){
                         <td><button onclick="Edit('${key}');" type="button" class="btn btn-link">${response[key].name}</button></td>
                         <td>${response[key].price} RON</td>
                         <td>${response[key].stoc}</td>
-                        <td><button onclick="delProduct(${key})" type="button" class="btn btn-danger">Remove</button></td>
+                        <td><button onclick="delProduct('${key}')" type="button" class="btn btn-danger">Remove</button></td>
                     </tr>`;
         }
         body.innerHTML = output;
