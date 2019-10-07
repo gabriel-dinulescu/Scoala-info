@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Gamergate</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/10cc612070.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <script src="scripts.js"></script>
+    </head>
+    <body onload="drawDetails();">
+        <!-- de aici incepe afisarea, div.container -->
+        <div class="container_">
+            <!-- bara de navigare flex responsive cu doua elemente, logo stanga si butoane dreapta -->
+            <div class="navbar_ col-xs-12 col-md-12 col-lg-12">
+                <div class="left_">
+                    <a class="navbar-logo_" href="index.html" >
+                        <img src="logo.png" width="auto" height="50" alt="">
+                        Gamergate
+                    </a>
+                </div>
+                <div class="right_">
+                    <div>
+                        <span id="nrProducts" class="badge badge-danger hidden_"></span>
+                        <button onclick="openCart();" type="button" class="btn btn-warning">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button onclick="openAdmin();" type="button" class="btn btn-warning">
+                            <i class="fas fa-tools"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="product" class="col-xs-12 col-md-12 col-lg-12">
+
+            </div>
+        </div>
+        <div id="success" class="alert alert-success fade show hidden_" style="position: fixed; bottom: 10px; left: 10px;" role="alert">
+            Produsul a fost adaugat cu success!
+        </div>
+        <div id="failure" class="alert alert-danger fade show hidden_" style="position: fixed; bottom: 10px; left: 10px;" role="alert">
+            Stoc insuficient pentru acest produs!
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

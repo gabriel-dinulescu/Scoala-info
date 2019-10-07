@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Gamergate</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/10cc612070.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <script src="scripts.js"></script>
+    </head>
+    <body onload="drawCart();">
+        <!-- de aici incepe afisarea, div.container -->
+        <div class="container_ ">
+            <!-- bara de navigare flex responsive cu doua elemente, logo stanga si butoane dreapta -->
+            <div class="navbar_ col-12 col-xs-12 col-md-12 col-lg-12">
+                <div class="left_">
+                    <a class="navbar-logo_" href="index.html" > 
+                        <img src="logo.png" width="auto" height="50" alt="">
+                        Gamergate
+                    </a>
+                </div>
+                <div class="right_">
+                    <div>
+                        <span id="nrProducts" class="badge badge-danger hidden_"></span>
+                        <button onclick="openCart();" type="button" class="btn btn-warning">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button onclick="openAdmin();" type="button" class="btn btn-warning">
+                            <i class="fas fa-tools"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="cos">
+                <div class="cartContainer">
+                    <h5>Cos de cumparaturi</h5>
+                    <div class="tableProducts col-12 col-xs-12 col-md-12 col-lg-12">
+                        <table class="table table-striped col-8 col-xs-10 col-md-10 col-lg-10">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Nume</th>
+                                    <th scope="col">Pret</th>
+                                    <th scope="col">Cantitate</th>
+                                    <th scope="col">Subtotal</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                        <div class="cartActions col-4 col-xs-2 col-md-2 col-lg-2">
+                            <p><span id="nr"></span> Produse</p>
+                            <p>TVA: 0%</p>
+                            <p>Transport: 0 RON</p>
+                            <p>Total: <span id="total"></span> RON</p>
+                            <button type="button" class="btn btn-primary">Trimite</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

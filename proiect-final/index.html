@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>Gamergate</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/10cc612070.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <script src="scripts.js"></script>
+    </head>
+    <body onload="draw();">
+        <!-- de aici incepe afisarea, div.container -->
+        <div class="container_">
+            <!-- bara de navigare flex responsive cu doua elemente, logo stanga si butoane dreapta -->
+            <div class="navbar_ col-xs-12 col-md-12 col-lg-12">
+                <div class="left_">
+                    <a class="navbar-logo_" href="" >
+                        <img src="logo.png" width="auto" height="50" alt="">
+                        Gamergate
+                    </a>
+                </div>
+                <div class="right_">
+                    <div>
+                        <span id="nrProducts" class="badge badge-danger hidden_">4</span>
+                        <button onclick="openCart();" type="button" class="btn btn-warning">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <button onclick="openAdmin();"id="buttonAdmin" type="button" class="btn btn-warning">
+                            <i class="fas fa-tools"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- carousel bootstrap modificat pentru a fi responsive -->
+            <div id="carouselAds" class="carousel slide col-xs-12 col-md-12 col-lg-12" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <div class="img"><img class="d-block col-xs-12 col-md-12 col-lg-12" src="img/amd-ad.jpg" alt="First ad"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="img"><img class="d-block col-xs-12 col-md-12 col-lg-12" src="img/nvidia-ad.jpg" alt="Second ad"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="img"><img class="d-block col-xs-12 col-md-12 col-lg-12" src="img/intel-ad.jpg" alt="Third ad"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="items">
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
