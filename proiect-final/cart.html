@@ -33,6 +33,9 @@
                 </div>
             </div>
             <div id="cos">
+                <div class="comenzi hidden_">
+                    Comanda trimisa in data de <span id="date"></span> in curs de desfasurare!
+                </div>
                 <div class="cartContainer col-12 col-xs-12 col-md-12 col-lg-12">    
                         <table class="table table-striped">
                             <caption>COS DE CUMPARATURI</caption>
@@ -58,6 +61,12 @@
                         </div>
                 </div>
             </div>
+        </div>
+        <div id="success" class="alert alert-success fade show hidden_" style="position: fixed; bottom: 10px; left: 10px;" role="alert">
+            Comanda trimisa cu success!
+        </div>
+        <div id="failure" class="alert alert-danger fade show hidden_" style="position: fixed; bottom: 10px; left: 10px;" role="alert">
+            Nu exista produse in cos!
         </div>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -37,11 +37,19 @@
             </div>
             <div id="gestiuneProduse" class="col-xs-12 col-md-12 col-lg-12">
                 <div class="productsTitle col-xs-12 col-md-10 col-lg-10">
-                    <h5>Gestionare produse</h5>
-                    <button onclick="insert();" type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Adauga Produs Nou</button>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                          <a data-toggle="products" onclick="menu(this)" href="#" class="nav-link active">Produse</a>
+                        </li>
+                        <li class="nav-item">
+                          <a data-toggle="orders" onclick="menu(this)" class="nav-link" href="#">Comenzi</a>
+                        </li>
+                      </ul>
                 </div>
-                <div class="container-table col-xs-12 col-md-10 col-lg-10">
-                        <table class="table table-striped col-xs-12 col-md-12 col-lg-12">
+                <div data-table="products" class="container-table col-xs-12 col-md-10 col-lg-10">
+                    <button data-toggle="products" onclick="insert();" type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Adauga Produs Nou</button>
+                        <table style="margin-top:20px;" class="table table-striped col-xs-12 col-md-12 col-lg-12">
+                          <caption>Gestionare produse</caption>
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">Imagine</th>
@@ -55,6 +63,23 @@
 
                                 </tbody>
                         </table>
+                </div>
+                <div data-table="orders" class="container-table col-xs-12 col-md-10 col-lg-10 hidden_">
+                    <table class="table table-striped col-xs-12 col-md-12 col-lg-12">
+                        <caption>Gestionare comenzi</caption>
+                              <thead class="thead-dark">
+                                  <tr>
+                                      <th scope="col">#Comanda</th>
+                                      <th scope="col">Nume</th>
+                                      <th scope="col">Pret</th>
+                                      <th scope="col">Cantitate</th>
+                                      <th scope="col">Data</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+
+                              </tbody>
+                      </table>
                 </div>
             </div>
         </div>
@@ -97,6 +122,12 @@
                     </div>
                   </div>
                 </div>
+              </div>
+              <div id="success1" class="alert alert-success fade show hidden_" style="position: fixed; bottom: 10px; left: 10px;" role="alert">
+                  Produs adaugat cu success!
+              </div>
+              <div id="success2" class="alert alert-success fade show hidden_" style="position: fixed; bottom: 10px; left: 10px;" role="alert">
+                  Produs actualizat cu success!
               </div>
     </body>
 </html>

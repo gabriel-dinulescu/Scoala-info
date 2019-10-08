@@ -1,7 +1,10 @@
+//animatie
 const animation = '<div class="animation col-xs-12 col-md-12 col-lg-12"><div class="loader"></div></div>';
 
+//array global pentru produse obtinute in urma fetch
 var products = {};
 
+//functie ce afiseaza elemente in index.html
 async function draw(){
     //output ce contine reponse json din fetch
     var output = '';
@@ -40,6 +43,7 @@ async function draw(){
 
 }
 
+//functie ce afiseaza details.html
 async function drawDetails(){
     //output ce contine reponse json din fetch
     var output = '';
@@ -77,6 +81,8 @@ async function drawDetails(){
     await numberProducts();
 }
 
+
+//functie ce adauga produse in cos din cart.html
 async function addCart(){
     //alert success
     let success = document.getElementById('success');
@@ -134,14 +140,18 @@ async function addCart(){
     
 }
 
+//button cu event de onclick ce redirectioneaza catre admin.html
 function openAdmin(){
     location.href = "admin.html";
 }
 
+//button cu event de onclick ce redirectioneaza catre cart.html
 function openCart(){
     location.href = "cart.html";
 }
 
+
+//afiseaza produse din cos daca exista in localstorage
 async function drawCart(){
 
     var output = '';
@@ -170,7 +180,7 @@ async function drawCart(){
             output += `<tr>
                             <th scope="row">${response[key].name}</th>
                             <td>${response[key].price} RON</td>
-                            <td><button onclick="decrease('${key}', this);">-</button> <span data-type="qty">${cartProducts[key].qty}</span> <button onclick="increase('${key}', this);">+</button></td>
+                            <td><button onclick="decrease('${key}');">-</button> <span data-type="qty">${cartProducts[key].qty}</span> <button onclick="increase('${key}', this);">+</button></td>
                             <td><span data-type="subtotal">${cartProducts[key].qty*response[key].price} RON</span></td>
                             <td><button onclick="remove('${key}');" class="btn btn-danger">Remove</button></td>
                         </tr>`;
@@ -187,7 +197,8 @@ async function drawCart(){
     await numberProducts();
 }
 
-function decrease(key, btn){
+//decrementare din cos produse doar daca valoare nu a ajuns la 1, atunci ignora cererea si intoarce fals 
+function decrease(key){
     let objTmp = {};
     objTmp = JSON.parse(localStorage.getItem(key));
     if(objTmp.qty == 1){
@@ -200,7 +211,8 @@ function decrease(key, btn){
     }
 }
 
-function increase(key, btn){
+//incrementare din cos produse doar daca valoarea + 1 nu este mai mare decat stoc ptr acest produs
+function increase(key){
     let objTmp = {};
     objTmp = JSON.parse(localStorage.getItem(key));
     var curr = Number(objTmp.qty) + 1;
@@ -215,6 +227,7 @@ function increase(key, btn){
     }
 }
 
+//stergere cheie produs din localstorage
 function remove(key){
 
     var result = confirm('Sunteti sigur ca vreti sa stergeti acest produs din cos?');
@@ -230,6 +243,8 @@ function remove(key){
     }
 }
 
+
+//numar de produse in cos, afisare in navbar in coltul stanga-sus al butonului ptr cart.html
 async function numberProducts(){
     var counter = document.getElementById('nrProducts');
     var value = 0;
@@ -247,18 +262,18 @@ async function numberProducts(){
     }
 }
 
-
+//afiseaza elemente din pagina admin.html
 async function drawAdmin(){
-    
-    var body = document.querySelector('table.table tbody');
-    var output = '';
+
+    var table = document.querySelector('div[data-table="products"] table tbody');
+    var outputProducts = '';
 
     await fetch('https://gamergate-63739.firebaseio.com/items/.json', {
         method: 'GET'
     }).then( response => response.json()).then(response => {
 
         for(var key in response){
-            output += `<tr>
+            outputProducts += `<tr>
                         <th scope="row"><img src="${response[key].img}" height="30" width="auto"/></th>
                         <td><button onclick="Edit('${key}');" type="button" class="btn btn-link">${response[key].name}</button></td>
                         <td>${response[key].price} RON</td>
@@ -266,12 +281,46 @@ async function drawAdmin(){
                         <td><button onclick="delProduct('${key}')" type="button" class="btn btn-danger">Remove</button></td>
                     </tr>`;
         }
-        body.innerHTML = output;
+        table.innerHTML = outputProducts;
         window.products = JSON.parse(JSON.stringify(response));
+
+    }).catch(error => console.log(error));
+
+}
+
+async function drawOrders(){
+    var counter = 1;
+    var table = document.querySelector('div[data-table="orders"] table tbody');
+    var outputOrders = '';
+
+    await fetch('https://gamergate-63739.firebaseio.com/cart/.json', {
+        method: 'GET'
+    }).then(response => response.json()).then(response => {
+        console.log(response);
+        for (var key in response){
+            for(var keyx in response[key]){    
+                    outputOrders += `<tr>
+                                        <th scope="row">${counter}</th>
+                                        <td>${products[response[key][keyx].id].name}</td>
+                                        <td>${response[key][keyx].price} RON</td>
+                                        <td>${response[key][keyx].qty}</td>
+                                        <td>${response[key][keyx].date}</td>
+                                    </tr>`;
+                
+            }
+            counter++;
+        }
+        if(outputOrders === ''){
+            table.innerHTML = 'NU EXISTA COMENZI';
+        } else {
+            table.innerHTML = outputOrders;
+        }
+
 
     }).catch(error => console.log(error));
 }
 
+//afiseaza modal si reseteaza campurile de input
 function insert(){
     $('#formular').modal('show');
     var form = document.getElementById('formProduct');
@@ -280,6 +329,8 @@ function insert(){
     btn.setAttribute('data-action', 'insert');
 }
 
+
+//deschide modal si populeaza campurile din modal cu valori din fetch, foloseste variabila globala products
 async function Edit(key){
 
     $('#formular').modal('show');
@@ -296,6 +347,7 @@ async function Edit(key){
     btn.setAttribute('data-id', key);
 }
 
+//sterge produsul din firebase
 async function delProduct(key){
     var r = confirm('Sunteti siguri ca vreti sa stergeti acest produs!');
     if(r === true){
@@ -310,8 +362,11 @@ async function delProduct(key){
     }
 }
 
-async function ajax(btn){
 
+//prelucreaza valorile din modal si le transmite prin post(insert) sau put(update) in firebase
+async function ajax(btn){
+    var successInsert = document.getElementById('success1');
+    var successUpdate = document.getElementById('success2');
     var key = btn.getAttribute('data-id');
     var action = btn.getAttribute('data-action');
     if(action == 'insert'){
@@ -329,6 +384,13 @@ async function ajax(btn){
             body: JSON.stringify(obj)
             }).then(response =>{
                 console.log(response);
+
+                successInsert.classList.remove('hidden_');
+
+                setTimeout(function(){
+                    successInsert.classList.add('hidden_');
+                }, 2000);
+
             }).catch(error => console.log(error));
     } else if(action == 'update'){
         
@@ -345,6 +407,12 @@ async function ajax(btn){
             body: JSON.stringify(obj)
             }).then(response => {
                 console.log(response);
+
+                successUpdate.classList.remove('hidden_');
+
+                setTimeout(function(){
+                    successUpdate.classList.add('hidden_');
+                }, 2000);
             }).catch(error => console.log(error));
     }
 
@@ -352,27 +420,73 @@ async function ajax(btn){
     $('#formular').modal('hide');
 }
 
+async function sendOrder(){
+    var success = document.getElementById('success');
+    var failure = document.getElementById('failure');
 
+    var objTmp = new Array();
+    objTmp = Object.entries(localStorage);
 
-/*
+    if(objTmp.length !== 0){
+        var date = new Date();
+        var cartProducts = new Object();
+        var cant;
+        var key;
+        var price;
+        for(let i = 0; i < objTmp.length; i++){
+            cant = JSON.parse(objTmp[i][1]);
+            key = objTmp[i][0];
+            price = Number(products[key].price);
+            cartProducts[i] = {id: key, qty: cant.qty, price: price, date: date};
+            localStorage.removeItem(key);
+        }
 
-                            <tbody>
-                                  <th scope="row">Produs</th>
-                                    <td>300</td>
-                                    <td><button onclick="decrease();">-</button> <span data-type="qty">100</span> <button onclick="increase();">+</button></td>
-                                    <td><span data-type="subtotal"></span>400</td>
-                                    <td><button class="btn btn-danger">Remove</button></td>
-                            </tbody>
+        await fetch('https://gamergate-63739.firebaseio.com/cart/.json', {
+            method: 'post',
+            body: JSON.stringify(cartProducts)
+        }).then(response => {
+            console.log(response);
 
+            success.classList.remove('hidden_');
 
+            setTimeout(function(){
+                success.classList.add('hidden_');
+            }, 2000);
+            drawCart();
+        }).catch(error => console.log(error));
+    } else {
 
-                    <div class="product-container col-xs-12 col-md-6 col-lg-3">
-                        <div class="product-block">
-                            <div class="product-image">
-                                <span class="badge badge-secondary">New!</span>
-                                <img src="img/pc1.jpg">
-                            </div>
-                            <div class="product-title">
-                                <p>Gaming PC Raptor</p>
-                            
-*/
+        failure.classList.remove('hidden_');
+        setTimeout(function(){
+            failure.classList.add('hidden_');
+        }, 2000);
+
+    }
+}
+
+function menu(btn){
+
+    var toggle = btn.getAttribute('data-toggle');
+    var bodyProducts = document.querySelector('div[data-table="products"]');
+    var bodyOrders = document.querySelector('div[data-table="orders"]');
+    if(toggle == 'products'){
+
+        bodyProducts.classList.remove('hidden_');
+        bodyOrders.classList.add('hidden_');
+        btn.classList.add('active');
+        var btnx = document.querySelector('a[data-toggle="orders"]');
+        btnx.classList.remove('active');
+        var btny = document.querySelector('button[data-toggle="products"]');
+        btny.classList.remove('hidden_');
+        drawAdmin();
+    } else {
+        bodyProducts.classList.add('hidden_');
+        bodyOrders.classList.remove('hidden_');
+        btn.classList.add('active');
+        var btnx = document.querySelector('a[data-toggle="products"]');
+        btnx.classList.remove('active');
+        var btny = document.querySelector('button[data-toggle="products"]');
+        btny.classList.add('hidden_');
+        drawOrders();
+    }
+}
