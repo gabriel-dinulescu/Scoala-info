@@ -48,8 +48,8 @@ button.btn-navbar_:hover{
 
 button.btn.btn-warning{
     padding: 10px;
-    font-size: 1.5em;
-    margin-right: 1em;
+    font-size: 1.2em;
+    margin-right: 0.5em;
     z-index: 1;
 }
 
@@ -86,7 +86,6 @@ div#carouselAds div.img{
 }
 
 div.img img{
-    height: 200px;
     width: auto;
     padding-left: 0em;
     padding-right: 0em;
@@ -258,21 +257,29 @@ div#cos{
 
 div.cartContainer{
     display: flex;
-    padding: 10px;
-    flex-direction: column;
-    justify-content: center;
-}
-
-div.tableProducts{
-    display: flex;
+    padding: 1em;
     flex-direction: row;
 }
+
+div.cartContainer table.table{
+    flex: 5;
+}
+
+div.cartContainer > div.cartActions{
+    flex: 1;
+}
+
 
 div.cartActions{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
+    justify-content: top;
+    align-items: flex-start;
+    padding: 5px;
+}
+
+div.cartActions p{
+    border-bottom: 1px solid grey;
 }
 
 div.tableProducts table.table td, table.table th{
@@ -292,4 +299,72 @@ div.productsTitle{
     justify-content: space-between;
     padding: 2em;
     align-items: center;
+}
+
+@media screen and (max-width:360px){
+
+    .table td, .table th{
+        padding: 0.5em;
+    }
+    div.cartContainer table.table{
+        font-size: 12px;
+    }
+
+    div.cartContainer button.btn.btn-danger{
+        padding: 5px;
+        font-size: 1em;
+    }
+
+    div.cartContainer{
+        padding: 0;
+        margin: 0;
+        flex-wrap: wrap;
+    }
+
+    div.product-details{
+        flex-wrap: wrap;
+    }
+
+    div.product-details div.img, div.details{
+        width: 100%;
+    }
+    div#items{
+        justify-content: center;
+        align-items: center;
+    }
+    div#items div.product-container{
+        width: 80%;
+    }
+
+    div.productsTitle{
+        padding: 5px;
+    }
+
+    div.container-table table.table{
+        font-size: 10px;
+    }
+    button.btn-link{
+        font-size: 10px;
+    }
+
+    div.container-table button.btn.btn-danger{
+        padding: 5px;
+        font-size: 1em;
+    }
+
+    div#gestiuneProduse{
+        padding: 0px;
+        margin: 0px;
+        width: 100%;
+    }
+
+    div.modal-dialog div.modal-content{
+        width: 80%;
+    }
+
+    div.modal-dialog{
+        display: flex;
+        align-content: center;
+        justify-content: center;
+    }
 }

@@ -33,10 +33,9 @@
                 </div>
             </div>
             <div id="cos">
-                <div class="cartContainer">
-                    <h5>Cos de cumparaturi</h5>
-                    <div class="tableProducts col-12 col-xs-12 col-md-12 col-lg-12">
-                        <table class="table table-striped col-8 col-xs-10 col-md-10 col-lg-10">
+                <div class="cartContainer col-12 col-xs-12 col-md-12 col-lg-12">    
+                        <table class="table table-striped">
+                            <caption>COS DE CUMPARATURI</caption>
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">Nume</th>
@@ -50,14 +49,13 @@
 
                             </tbody>
                         </table>
-                        <div class="cartActions col-4 col-xs-2 col-md-2 col-lg-2">
-                            <p><span id="nr"></span> Produse</p>
+                        <div class="cartActions">
+                            <p>Nr. Produse: <strong><span id="nr"></span></strong></p>
                             <p>TVA: 0%</p>
                             <p>Transport: 0 RON</p>
-                            <p>Total: <span id="total"></span> RON</p>
-                            <button type="button" class="btn btn-primary">Trimite</button>
+                            <p>Total: <strong><span id="total"></span></strong> RON</p>
+                            <button onclick="sendOrder();" type="button" class="btn btn-primary">Trimite Comanda</button>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>

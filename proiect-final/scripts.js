@@ -60,13 +60,13 @@ async function drawDetails(){
                         <img src="${response.img}" />
                     </div>
                     <div class="details">
-                        <h3>${response.name}</h3>
+                        <p><strong>${response.name}</strong></p>
                         <p>${response.description}</p>
-                        <h5>Pret: ${response.price} RON</h5>
+                        <p>Pret: <strong>${response.price} RON</strong></p>
                         <div class="separator"></div>
                         <p>In stoc: ${response.stoc} buc</p>
                         <p>Cantitate: <input class="cantitate" data-stoc="${response.stoc}" data-product="${id}" id="cantitate" type="number" value="1"/></p>
-                        <button onclick="addCart()" type="button" class="btn btn-primary"><i class="fas fa-cart-plus"></i> Adauga in cos</button>
+                        <button onclick="addCart()" type="button" class="btn btn-primary">Adauga in cos</button>
                     </div>
                  </div>`;
 
@@ -145,7 +145,7 @@ function openCart(){
 async function drawCart(){
 
     var output = '';
-    var cos = document.querySelector('div.tableProducts table.table tbody');
+    var cos = document.querySelector('div.cartContainer table.table tbody');
     var nrProduse = document.getElementById('nr');
     var total = document.getElementById('total');
     //afisam animatia in pagina
@@ -172,7 +172,7 @@ async function drawCart(){
                             <td>${response[key].price} RON</td>
                             <td><button onclick="decrease('${key}', this);">-</button> <span data-type="qty">${cartProducts[key].qty}</span> <button onclick="increase('${key}', this);">+</button></td>
                             <td><span data-type="subtotal">${cartProducts[key].qty*response[key].price} RON</span></td>
-                            <td><button onclick="remove('${key}');" class="btn btn-danger col-12">Remove</button></td>
+                            <td><button onclick="remove('${key}');" class="btn btn-danger">Remove</button></td>
                         </tr>`;
                         nrValue += Number(cartProducts[key].qty);
                         totalValue += (nrValue*Number(response[key].price));
@@ -223,6 +223,7 @@ function remove(key){
 
         localStorage.removeItem(key);
         drawCart();
+        numberProducts();
     } else {
 
         return false;
