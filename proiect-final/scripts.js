@@ -184,7 +184,7 @@ async function drawCart(){
                             <td><span data-type="subtotal">${cartProducts[key].qty*response[key].price} RON</span></td>
                             <td><button onclick="remove('${key}');" class="btn btn-danger">Remove</button></td>
                         </tr>`;
-                        nrValue += Number(cartProducts[key].qty);
+                        nrValue = Number(cartProducts[key].qty);
                         totalValue += (nrValue*Number(response[key].price));
         }
         nrProduse.innerText = nrValue;
@@ -453,6 +453,7 @@ async function sendOrder(){
                 success.classList.add('hidden_');
             }, 2000);
             drawCart();
+            numberProducts();
         }).catch(error => console.log(error));
     } else {
 
