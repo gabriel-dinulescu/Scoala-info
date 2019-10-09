@@ -4,21 +4,29 @@ const animation = '<div class="animation col-xs-12 col-md-12 col-lg-12"><div cla
 //array global pentru produse obtinute in urma fetch
 var products = {};
 
+function sort(){
+    products.sort(function (a, b) {
+        return Number(a.price) - Number(b.price);
+      });
+    console.log(products);
+}
 //functie ce afiseaza elemente in index.html
-async function draw(){
+async function draw(sort = null){
     //output ce contine reponse json din fetch
     var output = '';
     //bloc html unde vor aparea produsele
     var items = document.getElementById('items');
     //afisam animatia in pagina
     items.innerHTML = animation;
-    //incepe fetch
+
     await fetch('https://gamergate-63739.firebaseio.com/items/.json',{
         method: 'GET'
     }).then(response => response.json()).then(response =>{
 
-        for (var key in response) {
 
+
+        for (var key in response) {
+            
             output += `<div class="product-container col-xs-12 col-md-6 col-lg-3">
                         <div class="product-block">
                             <div class="product-image">
@@ -157,6 +165,7 @@ async function drawCart(){
     var output = '';
     var cos = document.querySelector('div.cartContainer table.table tbody');
     var nrProduse = document.getElementById('nr');
+	var nr = 0;
     var total = document.getElementById('total');
     //afisam animatia in pagina
     ////////////////
@@ -186,8 +195,9 @@ async function drawCart(){
                         </tr>`;
                         nrValue = Number(cartProducts[key].qty);
                         totalValue += (nrValue*Number(response[key].price));
+						nr += Number(cartProducts[key].qty);
         }
-        nrProduse.innerText = nrValue;
+        nrProduse.innerText = nr;
         total.innerText = totalValue;
         cos.innerHTML = output;
         window.products = JSON.parse(JSON.stringify(response));
